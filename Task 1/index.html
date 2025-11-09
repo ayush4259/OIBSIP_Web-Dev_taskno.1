@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Diety zone — Gaming Landing</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- NAV -->
+  <header class="site-header">
+    <div class="nav-inner">
+      <div class="logo">Diety<span>Zone</span></div>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#games">Games</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="cta">
+        <button class="btn btn-primary">Join Now</button>
+      </div>
+      <button class="mobile-toggle" aria-label="toggle menu">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO / SLIDER -->
+  <main id="home">
+    <section class="hero">
+      <!-- animated background layers -->
+      <div class="bg-gradient"></div>
+      <div class="bg-noise"></div>
+      <div class="bg-parallax" aria-hidden="true">
+        <div class="p-layer layer-1"></div>
+        <div class="p-layer layer-2"></div>
+        <div class="p-layer layer-3"></div>
+      </div>
+
+      <!-- slider -->
+      <div class="slider" id="slider">
+        <div class="slides">
+          <figure class="slide active">
+            <img src="GTA 6.jpg" alt="GTA 6 artwork (replace with licensed image)">
+            <figcaption>
+              <h2>GTA VI — Fall Heist</h2>
+              <p>Open world mayhem. Strategic heists. Live the story.</p>
+              <div class="slide-cta">
+                <button class="btn">Explore</button>
+                <button class="btn ghost">Trailer</button>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="slide">
+            <img src="Call of Duty.jpg" alt="Call of Duty artwork (replace with licensed image)">
+            <figcaption>
+              <h2>CALL OF DUTY — Black Ops III</h2>
+              <p>Tactical gameplay with modern warfare intensity.</p>
+              <div class="slide-cta">
+                <button class="btn">Play Now</button>
+                <button class="btn ghost">Learn</button>
+              </div>
+            </figcaption>
+          </figure>
+
+          <figure class="slide">
+            <img src="Prince of Persia.jpg" alt="Prince of Persia artwork (replace with licensed image)">
+            <figcaption>
+              <h2>PRINCE OF PERSIA — Sands Reborn</h2>
+              <p>Puzzle-platformer reborn with cinematic combat.</p>
+              <div class="slide-cta">
+                <button class="btn">Discover</button>
+                <button class="btn ghost">Gallery</button>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- slider controls -->
+        <div class="slider-controls">
+          <button class="prev" aria-label="previous">‹</button>
+          <div class="dots" id="dots"></div>
+          <button class="next" aria-label="next">›</button>
+        </div>
+
+        <!-- neon HUD elements -->
+        <div class="hud hud-left">Be-Ready</div>
+        <div class="hud hud-right">🔴LIVE</div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section card-section">
+      <div class="container">
+        <h2>About Oasis Infobyte — Gaming Division</h2>
+        <p class="lead">We build immersive gaming landing experiences — high-performance, aesthetic, and conversion-optimized.</p>
+        <div class="cards">
+          <div class="info-card">
+            <h3>Design</h3>
+            <p>Neo-noir visuals, dynamic motion, and pixel-perfect UI.</p>
+          </div>
+          <div class="info-card">
+            <h3>Dev</h3>
+            <p>Vanilla JS, performant CSS, and animated SVG layers for depth.</p>
+          </div>
+          <div class="info-card">
+            <h3>Launch</h3>
+            <p>CDN-ready assets, analytics-ready, and SEO friendly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GAMES / PORTFOLIO -->
+    <section id="games" class="section">
+      <div class="container">
+        <h2>Featured Titles</h2>
+        <div class="game-grid">
+          <article class="game-card">
+            <img src="GTA 6.jpg" alt="GTA card">
+            <div class="meta">
+              <h4>GTA VI</h4>
+              <p>Heist · Open World</p>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <img src="Call of Duty.jpg" alt="COD card">
+            <div class="meta">
+              <h4>Call of Duty</h4>
+              <p>FPS · Tactical</p>
+            </div>
+          </article>
+
+          <article class="game-card">
+            <img src="Prince of Persia.jpg" alt="Prince card">
+            <div class="meta">
+              <h4>Prince of Persia</h4>
+              <p>Platformer · Adventure</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section alt">
+      <div class="container">
+        <h2>Services</h2>
+        <ul class="services-list">
+          <li>Diety Zone</li>
+          <li>Game Art Integration</li>
+          <li>Animations & Cinematics</li>
+          <li>Performance Optimization</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <h2>Contact & Bookings</h2>
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submit simulated');">
+          <input name="name" required placeholder="Your name" />
+          <input name="email" type="email" required placeholder="Email address" />
+          <textarea name="message" rows="4" placeholder="Tell us about the project"></textarea>
+          <div class="form-actions">
+            <button class="btn btn-primary">Send Message</button>
+            <button class="btn ghost" type="reset">Reset</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> Oasis Infobyte — Gaming UI</div>
+        <div class="socials">
+          <a href="#" aria-label="twitter">Twitter</a>
+          <a href="#" aria-label="discord">Discord</a>
+          <a href="#" aria-label="youtube">Youtube</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+:root{
+  --bg-1:#0b0b0b;
+  --accent-red:#ff2d2d;
+  --accent-white: #ffffff;
+  --muted:#cfcfcf;
+  --glass: rgba(255,255,255,0.04);
+  --glass-2: rgba(255,255,255,0.02);
+  --transition: 300ms cubic-bezier(.2,.9,.2,1);
+  --max-width:1200px;
+}
+
+/* reset */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--accent-white);
+  background: linear-gradient(135deg, #0b0b0b 0%, #100 30%, #1a0000 60%);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+/* HEADER */
+.site-header{
+  position:fixed;left:0;right:0;top:0;z-index:60;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(10,10,10,0.45), rgba(10,10,10,0.08));
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.nav-inner{
+  max-width:var(--max-width);
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:14px 24px;
+}
+.logo{font-weight:700; font-size:18px; letter-spacing:0.4px}
+.logo span{color:var(--accent-red); margin-left:6px; font-weight:600}
+
+/* desktop nav */
+nav{margin-left:auto; display:flex; gap:18px}
+nav a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:14px;
+  padding:8px 10px;
+  border-radius:8px;
+  transition:var(--transition);
+}
+nav a:hover{color:var(--accent-white); background:var(--glass)}
+
+/* mobile toggle hidden by default */
+.mobile-toggle{display:none; margin-left:10px; background:transparent; color:var(--muted); border:0; font-size:20px}
+
+/* HERO */
+.hero{height:90vh; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden}
+.bg-gradient{
+  position:absolute; inset:0; z-index:0;
+  background: linear-gradient(140deg, rgba(30,0,0,0.6) 0%, rgba(18,0,0,0.35) 35%, rgba(10,0,0,0.15) 100%);
+  mix-blend-mode:screen;
+  animation: hueShift 18s linear infinite;
+}
+@keyframes hueShift{
+  0%{filter: hue-rotate(0deg)}
+  50%{filter: hue-rotate(8deg)}
+  100%{filter: hue-rotate(0deg)}
+}
+
+/* subtle animated noise over background */
+.bg-noise{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence baseFrequency="0.9" numOctaves="1" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.03" /></svg>');
+  mix-blend-mode: overlay;
+}
+
+/* parallax layers (abstract shapes) */
+.bg-parallax{position:absolute; inset:0; z-index:2; pointer-events:none}
+.p-layer{position:absolute; width:120%; height:120%; transform:translate(-10%,-10%); opacity:0.08; background-repeat:no-repeat; background-position:center; background-size:cover; animation: float 12s ease-in-out infinite}
+.p-layer.layer-1{background-image: radial-gradient(circle at 20% 30%, rgba(255,45,45,0.6), transparent 15%), radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08), transparent 25%); transform:translate(-5%,-5%); animation-duration:18s}
+.p-layer.layer-2{background-image: linear-gradient(120deg, rgba(255,0,0,0.08), transparent 40%), linear-gradient(60deg, rgba(255,255,255,0.03), transparent 60%); animation-duration:14s; mix-blend-mode: screen}
+.p-layer.layer-3{background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02), transparent 20%); animation-duration:20s}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-18px)}100%{transform:translateY(0)}}
+
+/* SLIDER */
+.slider{position:relative; width:100%; max-width:1200px; margin:auto; z-index:6; padding:30px 18px}
+.slides{position:relative; height:68vh; min-height:420px; border-radius:14px; overflow:hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.6); background:linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2))}
+.slide{position:absolute; inset:0; display:flex; gap:40px; align-items:flex-end; padding:28px; opacity:0; transform:scale(1.03); transition:opacity 800ms ease, transform 900ms cubic-bezier(.2,.9,.2,1)}
+.slide.active{opacity:1; transform:scale(1)}
+.slide img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:contrast(1.05) saturate(1.1) brightness(0.85); transform-origin:center; transition: transform 12s linear}
+.slide.active img{transform:scale(1.05)}
+
+/* caption on left bottom */
+.slide figcaption{
+  position:relative; z-index:4; max-width:640px; color:var(--accent-white);
+  text-shadow: 0 6px 30px rgba(0,0,0,0.8);
+  transform:translateZ(0);
+}
+.slide h2{font-size:36px; margin:0 0 8px; letter-spacing:0.6px}
+.slide p{margin:0 0 16px; color:var(--muted)}
+
+/* slide buttons */
+.slide-cta .btn{margin-right:12px}
+.btn{display:inline-block; padding:12px 18px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent); color:var(--accent-white); cursor:pointer; transition:var(--transition); font-weight:600}
+.btn:hover{transform:translateY(-3px); box-shadow: 0 10px 30px rgba(255,45,45,0.06)}
+.btn-primary{background:linear-gradient(90deg,var(--accent-red), #ff6b6b); color:#fff; border:0}
+
+/* ghost buttons */
+.btn.ghost{background:transparent; border:1px solid rgba(255,255,255,0.08); color:var(--muted)}
+
+/* HUD */
+.hud{position:absolute; top:28px; padding:8px 12px; border-radius:8px; font-weight:700; letter-spacing:0.8px; z-index:7; background:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.1)); border:1px solid rgba(255,255,255,0.03)}
+.hud-left{left:28px; color:#ffdede}
+.hud-right{right:28px; color:#ffdede}
+
+/* slider controls */
+.slider-controls{position:absolute; left:0; right:0; bottom:18px; display:flex; align-items:center; justify-content:center; gap:12px; z-index:8}
+.slider-controls button{background: rgba(0,0,0,0.5); color:var(--accent-white); border:0; padding:8px 12px; border-radius:8px; font-size:22px; cursor:pointer}
+.dots{display:flex; gap:8px}
+.dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.12);cursor:pointer; transition:all 180ms}
+.dot.active{transform:scale(1.25); background:var(--accent-red)}
+
+/* SECTIONS */
+.section{padding:80px 20px; position:relative; z-index:2}
+.card-section{background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); border-top:1px solid rgba(255,255,255,0.02)}
+.container{max-width:var(--max-width); margin:0 auto}
+.lead{color:var(--muted); margin-bottom:18px}
+
+/* cards */
+.cards{display:flex; gap:18px; margin-top:18px; flex-wrap:wrap}
+.info-card{flex:1; min-width:220px; background:var(--glass); padding:22px; border-radius:12px; border:1px solid rgba(255,255,255,0.03)}
+
+/* game grid */
+.game-grid{display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:24px}
+.game-card{background:var(--glass-2); border-radius:12px; overflow:hidden; position:relative; transition:transform 300ms}
+.game-card img{width:100%; height:160px; object-fit:cover; display:block}
+.game-card .meta{padding:12px}
+
+/* services alt */
+.section.alt{background:linear-gradient(180deg, rgba(10,0,0,0.06), transparent)}
+
+/* contact form */
+.contact-form{max-width:680px;margin:0 auto; display:grid; gap:12px}
+.contact-form input, .contact-form textarea{
+  padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:var(--accent-white)
+}
+.form-actions{display:flex; gap:12px; justify-content:flex-start; align-items:center}
+
+/* footer */
+.site-footer{padding:22px 0; border-top:1px solid rgba(255,255,255,0.03); margin-top:40px}
+.footer-inner{display:flex; align-items:center; justify-content:space-between; gap:12px}
+.socials a{display:inline-block; width:34px; height:34px; border-radius:8px; background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--muted); display:flex; align-items:center; justify-content:center; text-decoration:none}
+
+/* RESPONSIVE */
+@media (max-width:900px){
+  .slide h2{font-size:28px}
+  .slides{height:60vh}
+  nav{display:none}
+  .mobile-toggle{display:block}
+}
+@media (max-width:600px){
+  .slide h2{font-size:20px}
+  .slides{height:52vh}
+  .logo{font-size:16px}
+  .nav-inner{padding:12px}
+}
